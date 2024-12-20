@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="warranty_request_sequence" model="ir.sequence">
+            <field name="name">warranty.request Seq.</field>
+            <field name="code">warranty_seq</field>
+           <field name="prefix">WRQ-</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

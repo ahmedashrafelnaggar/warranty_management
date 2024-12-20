@@ -1,0 +1,94 @@
+<odoo>
+    <record id="view_warranty_request_tree" model="ir.ui.view">
+        <field name="name">warranty.request.tree</field>
+        <field name="model">warranty.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="request_number"/>
+                <field name="customer_id"/>
+                <field name="product_id"/>
+                <field name="approval_date"/>
+                <field name="purchase_date"/>
+                <field name="warranty_period"/>
+                <field name="request_status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_warranty_request_form" model="ir.ui.view">
+        <field name="name">warranty.request.form</field>
+        <field name="model">warranty.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button string="New" type="object" name="action_new"
+                                class="btn btn-info"/>
+
+
+                        <button string="In Progress" type="object" name="action_in_progress"
+                                class="btn btn-warning"/>
+
+
+                        <button string="Approve " type="object" name="approve_request"
+                                class="btn btn-success"/>
+
+
+                        <button string="Rejected" type="object" name="action_rejected"
+                                class="btn btn-danger"/>
+
+                        <button string="Completed" type="object" name="action_completed"
+                                class="btn btn-primary"/>
+
+                        <field name="request_status" widget="statusbar" options="{'clickable':1}"/>
+
+
+                    </header>
+
+                    <group>
+                        <group string="General info">
+                            <field name="request_number"/>
+                            <field name="customer_id"/>
+                            <field name="product_id"/>
+                            <field name="purchase_date"/>
+
+                        </group>
+                        <group string="Additional info">
+                            <field name="warranty_period"/>
+                            <field name="is_warranty_valid"/>
+
+                            <field name="approval_date"/>
+                            <field name="repair_cost"/>
+                        </group>
+                        <group>
+                            <field name="issue_description" placeholder="Idea description..."/>
+
+                        </group>
+                        <group>
+                            <field name="notes" placeholder="Idea notes..."/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    <menuitem id="menu_warranty_request" name="Warranty Requests" parent="sale.menu_sales" sequence="10"/>-->
+
+    <record id="action_warranty_request" model="ir.actions.act_window">
+        <field name="name">Warranty Requests</field>
+        <field name="res_model">warranty.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Add the menu item under Sales -->
+    <menuitem id="menu_warranty_request"
+              name="Warranty Requests"
+              parent="sale.sale_menu_root"
+              sequence="10"
+              action="action_warranty_request"/>
+
+    <menuitem id="menu_warranty_request_action" name="Warranty Requests" parent="warranty_management_root_menu"
+              action="action_warranty_request"/>
+</odoo>

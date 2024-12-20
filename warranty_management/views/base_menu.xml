@@ -1,0 +1,6 @@
+<odoo>
+    <menuitem
+            id="warranty_management_root_menu"
+            name="Warranty Management"
+    />
+</odoo>
